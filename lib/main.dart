@@ -18,26 +18,43 @@ class _ProgresBarCState extends State<ProgresBarC> {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-          height: 100,
-          width: 100,
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.red),
+        height: 100,
+        width: 100,
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.red),
+        ),
+        child: const RadialPercentWidgfet(
+          child: Text(
+            "72%",
+            style: TextStyle(color: Colors.white),
           ),
-          child: RadialPercentWidgfet()),
+        ),
+      ),
     );
   }
 }
 
 class RadialPercentWidgfet extends StatelessWidget {
-  const RadialPercentWidgfet({Key? key}) : super(key: key);
+  final Widget child;
+  const RadialPercentWidgfet({
+    Key? key,
+    required this.child,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Stack(
+      fit: StackFit.expand,
       children: [
         CustomPaint(
           painter: MyPainter(),
         ),
+        Padding(
+          padding: const EdgeInsets.all(11.0),
+          child: Center(
+            child: child,
+          ),
+        )
       ],
     );
   }
