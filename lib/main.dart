@@ -1,6 +1,5 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 void main() {
   runApp(const ProgresBarC());
@@ -18,15 +17,19 @@ class _ProgresBarCState extends State<ProgresBarC> {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        height: 100,
-        width: 100,
+        height: 200,
+        width: 200,
         decoration: BoxDecoration(
           border: Border.all(color: Colors.red),
         ),
         child: const RadialPercentWidgfet(
-          child: Text(
-            "72%",
-            style: TextStyle(color: Colors.white),
+          child: Padding(
+            padding: EdgeInsets.all(11.0),
+            child: Text(
+              "72%",
+              textDirection: ,
+              style: TextStyle(color: Colors.yellow, fontSize: 10),
+            ),
           ),
         ),
       ),
@@ -51,17 +54,15 @@ class RadialPercentWidgfet extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.all(11.0),
-          child: Center(
-            child: child,
-          ),
-        )
+          child: Center(child: child),
+        ),
       ],
     );
   }
 }
 
 class MyPainter extends CustomPainter {
-  final double percent = 0.58;
+  final double percent = 0.3;
   @override
   void paint(Canvas canvas, Size size) {
     final backGroundPaint = Paint();
@@ -74,7 +75,7 @@ class MyPainter extends CustomPainter {
     filedlPaint.style = PaintingStyle.stroke;
     filedlPaint.strokeWidth = 5;
     canvas.drawArc(
-      Offset(5.5, 5.5) & Size(size.width - 11, size.height - 11),
+      const Offset(5.5, 5.5) & Size(size.width - 11, size.height - 11),
       pi * 2 * percent - (pi / 2),
       pi * 2 * (1.0 - percent),
       false,
@@ -86,7 +87,7 @@ class MyPainter extends CustomPainter {
     feellPaint.strokeWidth = 5;
     feellPaint.strokeCap = StrokeCap.round;
     canvas.drawArc(
-      Offset(5.5, 5.5) & Size(size.width - 11, size.height - 11),
+      const Offset(5.5, 5.5) & Size(size.width - 11, size.height - 11),
       -pi / 2,
       pi * 2 * percent,
       false,
